@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 import reducer from "./Reducer";
-import { saveState, loadState } from "../Helper";
+import { saveState, loadState } from "./Helper";
 import { isEmpty, throttle } from "lodash";
 
 const persistedState = loadState();
