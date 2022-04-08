@@ -1,12 +1,20 @@
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom"
-import './App.css';
+
+import Home from "./pages/home/Home";
 
 const App = () => {
-  return (
-    <div className="App">
-      React Shopping Cart
-    </div>
-  );
+	return (
+		<Router>
+			<nav id="nav">
+				<div id="nav-items">
+					<Link to="/"> Home </Link>
+				</div>
+			</nav>
+			<Routes>
+				<Route path="/" element={<Home/>} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
