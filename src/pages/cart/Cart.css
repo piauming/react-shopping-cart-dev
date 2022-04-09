@@ -1,0 +1,94 @@
+.table-header {
+display: flex;
+padding: 10px;
+/* background-color: aqua; */
+}
+
+.table-header-items {
+background-color: white;
+}
+
+.table {
+display: flex;
+flex-direction: column;
+padding: 30px;
+border-radius: 5px;
+}
+
+.tr, .footer-tr {
+margin: 0px;
+display: flex;
+flex-direction: row;
+background-color: white;
+height: 80px;
+}
+
+.footer-tr {
+height: 150px;
+}
+
+.tr > *, .footer-tr > * {
+display: flex;
+flex: 1 1 100%;
+justify-content: center;
+align-items: center;
+
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+
+}
+
+/* .tr .image {
+background-color: aqua;
+width: 50px;
+} */
+
+.tr .title {
+display: flex;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.td .footer {
+background-color: bisque;
+display: flex;
+height: 100px;
+justify-content:end;
+}
+
+.checkout {
+padding: 20px 0px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.td .price-del {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.td .price-del p {
+padding: 0;
+margin: 0;
+}
+
+.photo {
+    height: calc(80% - 10px);
+    /* width: 200px; */
+    padding: 10px 20px;
+    /* padding-left: 20px; */
+    object-fit: contain;
+    background-color: white;
+  }
+
+.delete-item {
+color: orangered;
+cursor: pointer;
+font-size: smaller;
+}
