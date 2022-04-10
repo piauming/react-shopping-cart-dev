@@ -55,7 +55,7 @@ text-overflow: ellipsis;
 background-color: bisque;
 display: flex;
 height: 100px;
-justify-content:end;
+justify-content:flex-end;
 }
 
 .checkout {
