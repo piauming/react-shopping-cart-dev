@@ -1,14 +1,25 @@
 import { useDispatch } from 'react-redux';
+import { checkoutCart } from '../../../redux/actions';
 import { toDecimalPlace } from '../../../util/Helper';
 
 const Checkout = ({cart}) => {
+
+    const dispatch = useDispatch();
+
     let total = 0;
-    Object.getOwnPropertyNames(cart).map(id => {
+
+    for (var id in cart) {
+      if (cart.hasOwnProperty(id)) {
         const item = cart[id];
         total += item.qty * item.price;
-    });
+      }
+    }
 
     total = toDecimalPlace(total.toString(), 2);
+
+    const checkout = () => {
+      dispatch(checkoutCart());
+    }
 
     return(
         <div>
@@ -21,7 +32,7 @@ const Checkout = ({cart}) => {
               <div className="td">
                 <div className='checkout'>
                   <h2>${total}</h2>
-                  <button>Checkout</button>
+                  <button onClick={checkout}>Checkout</button>
                 </div>
               </div>
             </div>

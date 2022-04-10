@@ -1,5 +1,5 @@
 import initialState from "./InitialState";
-import { addToCart, minusFromCart, removeFromCart } from "./reducers";
+import { addToCart, minusFromCart, removeFromCart, checkoutCart } from "./reducers";
 
 // reducer function
 const reducer = (state = initialState, action) => {
@@ -10,6 +10,8 @@ const reducer = (state = initialState, action) => {
             return minusFromCart(state, action.payload);
         case "removeFromCart":
             return removeFromCart(state, action.payload);
+        case "checkoutCart":
+            return checkoutCart(state, action.payload);
         default:
             return state;
     }
