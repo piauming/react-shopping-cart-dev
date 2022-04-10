@@ -31,7 +31,7 @@ const Checkout = ({cart}) => {
               <div className="td"/>
               <div className="td">
                 <div className='checkout'>
-                  <h2>${total}</h2>
+                  <h2 data-testid="total">${total}</h2>
                   <button onClick={checkout}>Checkout</button>
                 </div>
               </div>

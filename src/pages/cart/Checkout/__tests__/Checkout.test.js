@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { render, screen } from '@testing-library/react';
 
 import Checkout from './../Checkout';
 
@@ -33,14 +34,24 @@ describe('With React Testing Library', () => {
     const mockStore = configureStore();
     let store;
 
-    it("Checkout component renders without crashing", () => {
+    it("checkout component renders without crashing", () => {
         store = mockStore(cart);
 
         const div = document.createElement("div");
         ReactDOM.render(
             <Provider store={store}>
                 <Checkout cart={cart}></Checkout>
-            </Provider>, 
-        div);
+            </Provider>, div);
+    });
+
+
+    it("calculates total correctly", () => {
+        store = mockStore(cart);
+        const { getByTestId } = render(
+            <Provider store={store}>
+                <Checkout cart={cart}></Checkout>
+            </Provider>
+        );
+        expect(getByTestId("total")).toHaveTextContent("$212.60");
     });
 });
