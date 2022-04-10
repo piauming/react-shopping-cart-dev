@@ -1,25 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import QtyControl from './QtyControl';
-import { removeFromCart } from '../../redux/actions';
+import QtyControl from './../QtyControl/QtyControl';
+import Checkout from './../Checkout/Checkout';
+import { removeFromCart } from '../../../redux/actions';
+
+import { toDecimalPlace } from '../../../util/Helper';
 import './Cart.css';
 
-const toDecimalPlace = (numString, unit) => {
-  const num = Number(numString);
-  return (Math.round(num * 100) / 100).toFixed(unit);
-}
-
-const EmptyRow = () => {
-  return (
-    <div className="tr">
-    <div className="td"/>
-    <div className="td"/>
-    <div className="td"/>
-    <div className="td"/>
-    </div>
-  )
-}
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -31,10 +19,16 @@ const Cart = () => {
 
   return (
     <div className='container'>
+      {
+        Object.getOwnPropertyNames(cart).length === 0 &&  
+          <div className='no-items'>
+            <h4>There are no items in your cart.</h4>
+          </div>
+      }
+
                 <div className="table">
-                    <EmptyRow/>
                     {
-                        Object.keys(cart).map(id => 
+                        Object.getOwnPropertyNames(cart).map(id => 
         
                             <div key={`product-${id}`} className="tr">
                                 <div className="td">
@@ -55,20 +49,11 @@ const Cart = () => {
                                 </div>
                             </div>
                         )
+
+
                     }
 
-
-                            <div className="footer-tr">
-                                <div className="td"/>
-                                <div className="td"/>
-                                <div className="td"/>
-                                <div className="td">
-                                  <div className='checkout'>
-                                    <h2>$100.90</h2>
-                                    <button>Checkout</button>
-                                  </div>
-                                </div>
-                            </div>
+                   <Checkout cart={cart} />
                 </div>
                 </div>
 

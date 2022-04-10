@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { addToCart, minusFromCart } from '../../redux/actions';
+import { addToCart, minusFromCart } from '../../../redux/actions';
 
 import './QtyControl.css';
 

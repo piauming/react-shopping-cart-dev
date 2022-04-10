@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom"
 
 import Home from "./pages/home/Home";
 import CartButton from "./pages/cart/CartButton";
-import Cart from "./pages/cart/Cart";
+import Cart from "./pages/cart/Cart/Cart";
 
 const App = () => {
 	return (
