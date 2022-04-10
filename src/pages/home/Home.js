@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
-import axios from 'axios';
+// import axios from 'axios';
+import useFetch from '../../hooks/useFetch';
 
 import Product from "./Product";
 import './Home.css';
 
 import { css } from "@emotion/react";
-import ClipLoader from "react-spinners/ClipLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
 const override = css`
   display: block;
   margin: 0 auto;
@@ -14,28 +15,24 @@ const override = css`
 `;
 
 const Home = () => {
-    let [loading, setLoading] = useState(true);
-    const [products, setProducts] = useState([]);
+   const [data, loading, error] = useFetch("https://fakestoreapi.com/products?limit=15");
 
-    useEffect(() => {
-        axios.get("https://fakestoreapi.com/products?limit=15").then(res => {
-            setProducts(res.data);
-        })
-        .catch(err => console.log(err));
-    }, []);
+    if (error) {
+        console.log(error);
+    }
 
     return (
         <div className='container'>
-            { products.length === 0 && 
+            { loading && 
                 <div className='loader-wrapper'>
-                    <ClipLoader color={'orange'} loading={loading} css={override} size={150} />
+                    <PropagateLoader color={'orangered'} loading={loading} css={override} size={15} />
                 </div>
             }
 
-            { products.length > 0 && 
+            { data?.length > 0 && 
                 <div className='products'>
                 {
-                    products.map(product => 
+                    data.map(product => 
                         <Product key={product.id} {...product} />
                     )
                 } 

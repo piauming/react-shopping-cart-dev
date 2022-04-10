@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom"
 import Home from "./pages/home/Home";
 import CartButton from "./pages/cart/CartButton";
 import Cart from "./pages/cart/Cart/Cart";
+import ShoppingHelp from "./pages/help/ShoppingHelp";
 
 const App = () => {
 	return (
@@ -15,7 +16,8 @@ const App = () => {
 			</nav>
 			<Routes>
 				<Route path="/" element={<Home/>} />
-        <Route path="/cart" element={<Cart/>} />
+        		<Route path="/cart" element={<Cart/>} />
+				<Route path="/help" element={<ShoppingHelp/>} />
 			</Routes>
 		</Router>
 	);
